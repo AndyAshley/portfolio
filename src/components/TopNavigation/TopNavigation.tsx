@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./TopNavigation.module.scss";
 import Container from "../UI/Container";
 import Hamburger from "../UI/Hamburger";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 type NavListPropsType = {
   onClick?: () => void;
@@ -85,9 +85,9 @@ const TopNavigation = () => {
         </div>
       </Container>
       <div className={`${styles.menu} ${navOpen && styles.open}`}>
-          <div className={styles.particle1} />
-          <div className={styles.particle2} />
-          <div className={styles.particle3} />
+        <div className={styles.particle1} />
+        <div className={styles.particle2} />
+        <div className={styles.particle3} />
         <NavList onClick={linkClickHandler} />
       </div>
     </Container>
