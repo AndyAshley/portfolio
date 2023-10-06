@@ -1,5 +1,20 @@
 @import "../../styles/variables.scss";
 
+// n is number of stars required
+@function multiple-box-shadow($n) {
+  $value: "#{random(2000)}px #{random(2000)}px #fafcff";
+
+  @for $i from 2 through $n {
+    $value: "#{$value}, #{random(2000)}px #{random(2000)}px #fafcff";
+  }
+
+  @return unquote($value);
+}
+
+$shadows-small: multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big: multiple-box-shadow(100);
+
 .navBar {
   width: 100%;
   padding: 1rem;
@@ -75,10 +90,26 @@
       transition: all 0.2s ease-in-out;
       margin-top: 1rem;
       color: $light-grey;
+
       &:hover {
         color: $white;
       }
     }
+  }
+}
+
+.navList li a.active {
+  color: $white;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    height: 2px;
+    background-color: $white;
+    animation: borderGrow 0.4s forwards;
   }
 }
 
@@ -112,8 +143,81 @@
   height: calc(100vh - 50px);
   overflow: hidden;
 
-  @media screen and ( min-width: 390px) {
+  @media screen and (min-width: 390px) {
     height: calc(100vh - 125px);
   }
-  
+}
+
+.particle1 {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation: particles 100s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 1px;
+    height: 1px;
+    background: transparent;
+    box-shadow: $shadows-small;
+  }
+}
+
+.particle2 {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation: particles 150s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 2px;
+    height: 2px;
+    background: transparent;
+    box-shadow: $shadows-medium;
+  }
+}
+
+.particle3 {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation: particles 200s linear infinite;
+
+  &:after {
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+  }
+}
+
+@keyframes particles {
+  from {
+    transform: translateY(0px);
+    opacity: random(100) / 100;
+  }
+  to {
+    transform: translateY(-1500px);
+    opacity: 1;
+  }
+}
+
+@keyframes borderGrow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }

@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./TopNavigation.module.scss";
 import Container from "../UI/Container";
 import Hamburger from "../UI/Hamburger";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 type NavListPropsType = {
   onClick?: () => void;
@@ -12,24 +12,44 @@ const NavList = ({ onClick }: NavListPropsType) => {
   return (
     <ul className={styles.navList}>
       <li>
-        <Link to="/" onClick={onClick}>
+        <NavLink
+          to="/"
+          onClick={onClick}
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+          end
+        >
           Home
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/about" onClick={onClick}>
+        <NavLink
+          to="/about"
+          onClick={onClick}
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+          end
+        >
           About
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/portfolio" onClick={onClick}>
+        <NavLink
+          to="/portfolio"
+          onClick={onClick}
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+          end
+        >
           Portfolio
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link to="/contact" onClick={onClick}>
+        <NavLink
+          to="/contact"
+          onClick={onClick}
+          className={({ isActive }) => (isActive ? styles.active : undefined)}
+          end
+        >
           Contact
-        </Link>
+        </NavLink>
       </li>
       <li>
         <a href="/Andrew_Ashley_CV_2023.pdf" target="_blank" onClick={onClick}>
@@ -65,6 +85,9 @@ const TopNavigation = () => {
         </div>
       </Container>
       <div className={`${styles.menu} ${navOpen && styles.open}`}>
+          <div className={styles.particle1} />
+          <div className={styles.particle2} />
+          <div className={styles.particle3} />
         <NavList onClick={linkClickHandler} />
       </div>
     </Container>
