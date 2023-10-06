@@ -1,0 +1,44 @@
+.hamburgerContainer {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-inline-end: 0.5rem;
+  transition: all 0.5s ease-in-out;
+  &.open {
+    transform: rotate(180deg);
+  }
+  & img {
+    max-width: 25px;
+    height: auto;
+  }
+}
+
+.hamburgerLine {
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+  margin: 4px 0;
+  transition: all 0.5s ease-in-out;
+  opacity: 1;
+
+  &.top {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  &.middle {
+    opacity: 0;
+  }
+
+  &.bottom {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}

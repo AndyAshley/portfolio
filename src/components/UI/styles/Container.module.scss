@@ -1,0 +1,15 @@
+.container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &:not(.fluid) {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &.fluid {
+    max-width: 100%;
+  }
+}

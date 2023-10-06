@@ -1,0 +1,119 @@
+@import "../../styles/variables.scss";
+
+.navBar {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  background-color: $dark-grey;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.navContainer {
+  /* Increasing specificity to override the flex direction from the container component */
+  &.navContainer {
+    flex-direction: row;
+
+    @media screen and (min-width: 768px) {
+      align-items: flex-end;
+    }
+  }
+  justify-content: space-between;
+}
+
+.navLogo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-inline-end: 0.5rem;
+  & img {
+    max-width: 65px;
+    height: auto;
+  }
+}
+
+.navLinks {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 2rem;
+  height: 100%;
+
+  & li {
+    color: $light-grey;
+    margin-inline: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    margin-top: 1rem;
+    color: $white;
+
+    & a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    font-size: $font-size-base;
+    padding: unset;
+    & li {
+      color: $light-grey;
+      margin-inline: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      margin-top: 1rem;
+      color: $light-grey;
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+}
+
+.navBurger {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  margin-inline-start: 0.5rem;
+  color: $white;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.menu {
+  top: 100%;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: $dark-grey;
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  height: 0vh;
+  z-index: 500;
+}
+
+.open {
+  height: calc(100vh - 50px);
+  overflow: hidden;
+
+  @media screen and ( min-width: 390px) {
+    height: calc(100vh - 125px);
+  }
+  
+}
